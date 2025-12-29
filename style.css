@@ -112,7 +112,7 @@ nav {
 }
 .hero {
     height: 85vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('fleet-exterior-right.jpg');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('Image 1.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
