@@ -8,64 +8,66 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Montserrat', sans-serif; background-color: var(--charcoal-dark); color: var(--white); line-height: 1.6; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background-color: var(--charcoal-dark); color: var(--white); line-height: 1.6; letter-spacing: 0.3px; }
 h1, h2, h3, .logo { font-family: 'Cinzel', serif; }
-h2 { font-size: 2.5rem; color: var(--gold); text-align: center; margin-bottom: 20px; }
+h2 { font-size: 2.5rem; color: var(--gold); text-align: center; }
 
-/* Navigation & Logo */
 nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 10px 5%; background: rgba(18, 18, 18, 0.95);
-    position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    position: sticky; top: 0; z-index: 1000;
 }
-.logo img { height: 60px; width: auto; display: block; }
-.nav-links { list-style: none; display: flex; gap: 20px; }
-.nav-links a { text-decoration: none; color: var(--silver); text-transform: uppercase; font-size: 0.8rem; font-weight: 600; }
+
+.logo img { height: 50px; display: block; }
+.nav-links { list-style: none; display: flex; gap: 15px; }
+.nav-links a { text-decoration: none; color: var(--silver); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; transition: 0.3s; }
 .nav-links a:hover { color: var(--gold); }
 
-/* Hero Section */
 .hero {
-    height: 80vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('Image 1.jpg');
+    height: 85vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('Image 1.jpg');
     background-size: cover; background-position: center;
     display: flex; align-items: center; justify-content: center; text-align: center;
 }
-.hero h1 { font-size: 3rem; margin-bottom: 10px; }
+.hero h1 { font-size: 3.5rem; margin-bottom: 15px; }
+.hero p { font-size: 1.2rem; color: var(--silver); margin-bottom: 30px; }
 
-/* Buttons */
-.cta-buttons { display: flex; gap: 20px; justify-content: center; margin-top: 20px; }
-.btn { padding: 12px 30px; text-decoration: none; font-weight: 700; border-radius: 4px; transition: 0.3s; cursor: pointer; }
-.primary { background: var(--gold); color: black; border: none; }
-.secondary { border: 2px solid var(--gold); color: var(--gold); }
-.btn:hover { transform: translateY(-2px); filter: brightness(1.2); }
+.btn { padding: 14px 30px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; border-radius: 2px; display: inline-block; cursor: pointer; }
+.primary { background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: black; border: none; }
+.secondary { border: 2px solid var(--white); color: var(--white); }
+.primary:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
 
-/* Car Gallery Grid */
+.services { padding: 100px 10%; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+.card { padding: 40px; background: var(--charcoal-light); border: 1px solid #333; transition: 0.4s; }
+.card:hover { border-color: var(--gold); transform: translateY(-5px); }
+.card h3 { color: var(--gold); margin-bottom: 15px; }
+
+/* Fixed Grid: Updated from .fleet-grid to .car-grid to match HTML */
 .car-section { padding: 80px 5%; background: #111; text-align: center; }
-.car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 30px; }
-.car-item img { width: 100%; height: 250px; object-fit: cover; border: 1px solid #333; transition: 0.3s; }
-.car-item:hover img { border-color: var(--gold); transform: scale(1.02); }
+.car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.car-item { border: 1px solid #222; overflow: hidden; }
+.car-item img { width: 100%; height: 300px; object-fit: cover; display: block; transition: 0.5s ease; }
+.car-item:hover img { transform: scale(1.05); }
 
-/* Form Layout Fixes */
-.quote-section { padding: 80px 5%; }
-.quote-container { max-width: 850px; margin: auto; padding: 40px; background: var(--charcoal-light); border: 1px solid #333; }
+.quote-section { padding: 100px 5%; }
+.quote-container { max-width: 800px; margin: auto; padding: 50px; background: rgba(30, 30, 30, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.1); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-/* THE FIX: Additional Notes Full Width */
-.form-group.full-width {
-    grid-column: 1 / span 2;
-}
+/* FIX: Forces the Notes box to its own line regardless of the grid above it */
+.full-width-group { width: 100%; margin-top: 10px; }
+.full-width { width: 100%; }
 
-.form-group { display: flex; flex-direction: column; margin-bottom: 20px; text-align: left; }
-.form-group label { color: var(--gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
-.quote-form input, .quote-form select, .quote-form textarea {
-    padding: 12px; background: #000; border: 1px solid #444; color: white; border-radius: 4px; width: 100%;
-}
-.quote-form textarea { min-height: 100px; resize: vertical; }
+.form-group { display: flex; flex-direction: column; text-align: left; gap: 8px; margin-bottom: 20px; }
+.form-group label { color: var(--gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+.quote-form input, .quote-form select, .quote-form textarea { padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #444; color: white; border-radius: 4px; }
+.quote-form textarea { min-height: 120px; resize: vertical; width: 100%; }
 
-/* Mobile View */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+    .hero h1 { font-size: 1.8rem !important; }
+    .cta-buttons { display: flex; flex-direction: column; gap: 15px; }
     .form-row { grid-template-columns: 1fr; }
-    .form-group.full-width { grid-column: 1; }
-    .nav-links { display: none; } /* Consider a burger menu later */
-    .hero h1 { font-size: 2rem; }
-    .cta-buttons { flex-direction: column; align-items: center; }
 }
