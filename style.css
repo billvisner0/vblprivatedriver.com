@@ -287,3 +287,8 @@ nav {
         width: 100% !important;
     }
 }
+
+.logo img {
+    height: 50px;
+    display: block;
+}
